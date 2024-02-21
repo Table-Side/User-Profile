@@ -14,8 +14,7 @@ model User {
   id       String @id @default(cuid())
   email    String @unique
   password String
-
-  lastLogin DateTime? @updatedAt
+  role     String @default("user")
 
   Profile Profile?
 }

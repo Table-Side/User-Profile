@@ -9,7 +9,7 @@ import { encryptPassword } from "../utils/password";
 const router = Router();
 
 router.post("/register", async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
 
     if (!email || !password) {
         return res.status(400).json({
@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
             return user;
         })
         .then((user) => {
-            return res.json(user);
+            return res.json({ ...user, password: undefined });
         })
         .catch((err) => {
             return res.status(400).send({

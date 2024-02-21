@@ -37,7 +37,7 @@ class App {
 
     routes() {
         // Authentication
-        this.server.use("/", routers.auth);
+        this.server.use("", routers.auth);
 
         // User Profile
         // this.server.use("/users", routers.users);
