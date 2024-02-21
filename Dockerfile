@@ -1,10 +1,10 @@
-FROM --platform=linux/amd64 node:21.6.1
 
-WORKDIR /app/users
+
+FROM --platform=linux/amd64 node:21.6.1 AS builder
+
+WORKDIR /app
 
 COPY package.json yarn.lock ./
-
-CMD ["echo", "Installing dependencies"]
 
 RUN yarn install --frozen-lockfile
 
@@ -15,5 +15,9 @@ COPY .env ./
 
 RUN yarn build
 
+COPY wait-for-it.sh ./
+
+FROM builder AS production
+
 EXPOSE 3000
-RUN yarn start
+ENTRYPOINT yarn start:migrate
