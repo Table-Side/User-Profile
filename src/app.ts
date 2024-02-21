@@ -1,13 +1,8 @@
-import express from 'express';
+import express, {NextFunction, Request, Response} from 'express';
 
-import corsMiddleware from './middleware/cors';
-import authMiddleware from './middleware/authentication';
-import errorMiddleware from "./middleware/error";
-import jsonMiddleware from "./middleware/json";
-import loggingMiddleware from "./middleware/logging";
+import cors from 'cors';
 
-import publicRoutes from './routes/publicRoutes';
-import protectedRoutes from './routes/protectedRoutes';
+import * as routers from "./routes";
 
 class App {
     public server;
@@ -20,16 +15,36 @@ class App {
     }
 
     middlewares() {
-        this.server.use(jsonMiddleware);
-        this.server.use(errorMiddleware);
-        this.server.use(loggingMiddleware);
-        this.server.use(corsMiddleware);
-        this.server.use(authMiddleware);
+        // JSON
+        this.server.use(express.json());
+
+        // Error handling
+        this.server.use((err: any, req: Request, res: Response, next: NextFunction) => {
+            console.error(err.stack);
+            res.status(500).send('Unknown error occurred!');
+            next();
+        });
+
+        // Request Logging
+        this.server.use((req, res, next) => {
+            console.log(`Request received: ${req.method} ${req.url}`);
+            next();
+        });
+
+        this.server.use(cors());
     }
 
     routes() {
-        this.server.use(publicRoutes);
-        this.server.use(protectedRoutes);
+        // Authentication
+        this.server.use("/", routers.auth);
+
+        // User Profile
+        // this.server.use("/users", routers.users);
+
+        // 404
+        this.server.use((req, res, next) => {
+            return res.status(404).send("Not found or invalid params");
+        });
     }
 }
 
