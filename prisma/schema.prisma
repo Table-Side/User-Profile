@@ -17,8 +17,7 @@ model User {
 
   lastLogin DateTime? @updatedAt
 
-  RefreshToken RefreshToken[]
-  Profile      Profile?
+  Profile Profile?
 }
 
 model Profile {
@@ -30,15 +29,6 @@ model Profile {
 
   firstName String
   lastName  String
-
-  user User @relation(fields: [userId], references: [id])
-}
-
-model RefreshToken {
-  id        String   @id @default(cuid())
-  userId    String
-  token     String   @unique
-  createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
 }
