@@ -25,11 +25,9 @@ Registers a new user.
 #### Response Body
 ```json
 {
-  "token": "string",
-  "profile": {
     "id": "string",
-    "email": "string"
-  }
+    "email": "string",
+    "role": "string"
 }
 ```
 
@@ -46,11 +44,7 @@ Authenticates a user.
 #### Response Body
 ```json
 {
-  "token": "string",
-  "profile": {
-    "id": "string",
-    "email": "string"
-  }
+  "token": "string"
 }
 ```
 
@@ -60,10 +54,26 @@ Returns the current user's profile.
 #### Response Body
 ```json
 {
-  "token": "string",
   "profile": {
     "id": "string",
     "email": "string"
   }
 }
+```
+
+## .env Configuration
+```dotenv
+# -- DB -- #
+POSTGRES_USER="<GENERATE_THIS>"
+POSTGRES_PASSWORD="<GENERATE_THIS>"
+POSTGRES_DB="tableside_users"
+
+# -- PG ADMIN -- #
+PGADMIN_DEFAULT_EMAIL="admin@surrey.ac.uk"
+PGADMIN_DEFAULT_PASSWORD="password"
+
+# -- APP -- #
+DATABASE_URL="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:5432/${POSTGRES_DB}?schema=public"
+JWT_SECRET="<GENERATE_THIS>"
+
 ```
