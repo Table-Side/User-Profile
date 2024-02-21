@@ -1,6 +1,6 @@
 import { Router } from "express";
 import passport from "passport";
-import type { User } from ".prisma/client";
+import type { User } from "../../node_modules/.prisma/client";
 import jwt from "jsonwebtoken";
 import prisma from "../config/prisma";
 import { appConfig } from "../config/app";

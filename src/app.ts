@@ -2,6 +2,7 @@ import express, {NextFunction, Request, Response} from 'express';
 
 import cors from 'cors';
 
+import * as passportConfig from "./config/passport";
 import * as routers from "./routes";
 
 class App {

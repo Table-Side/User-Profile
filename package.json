@@ -4,7 +4,7 @@
   "main": "dist/server.js",
   "license": "MIT",
   "scripts": {
-    "build": "yarn prisma:gen && tsc --project ./",
+    "build": "yarn prisma:gen && yarn tsc --project ./",
     "prisma:gen": "prisma generate",
     "prisma:migrate:create": "prisma migrate dev --create-only",
     "prisma:migrate:deploy": "prisma migrate deploy",
