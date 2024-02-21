@@ -15,8 +15,6 @@ COPY .env ./
 
 RUN yarn build
 
-COPY wait-for-it.sh ./
-
 FROM builder AS production
 
 EXPOSE 3000
