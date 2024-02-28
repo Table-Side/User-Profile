@@ -2,7 +2,7 @@
 
 A microservice component for user authentication and management.
 
-Powered by [Passport.js](https://www.passportjs.org/) and [Prisma](https://www.prisma.io)
+Powered by [Express.js](), [Passport.js](https://www.passportjs.org/) and [Prisma](https://www.prisma.io)
 
 ## Purpose
 

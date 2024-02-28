@@ -32,6 +32,7 @@ class App {
             next();
         });
 
+        // CORS
         this.server.use(cors());
     }
 

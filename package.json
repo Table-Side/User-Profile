@@ -2,7 +2,10 @@
   "name": "tableside-users",
   "version": "0.1.0",
   "main": "dist/server.js",
+  "repository": "https://github.com/Table-Side/User",
+  "author": "TableSide Team",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "build": "yarn prisma:gen && yarn tsc --project ./",
     "prisma:gen": "prisma generate",
