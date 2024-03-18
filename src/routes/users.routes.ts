@@ -1,12 +1,13 @@
 import { Router } from "express";
 import passport from "passport";
 import prisma from "../config/prisma";
+import { User } from "@prisma/client";
 
 const router = Router();
 
 router.get("/me", passport.authenticate("jwt", { session: false }), async (req, res) => {
     try {
-        const userId = req.user.id;
+        const userId = (req.user as User).id;
         const user = await prisma.user.findUnique({ where: { id: userId } });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
