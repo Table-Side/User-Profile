@@ -1,11 +1,12 @@
-# Tableside: User Service
+# Tableside: API Gateway & User Service
 
-A microservice component for user authentication and management.
+A microservice acting as a gateway, and providing user authentication and management.
 
 Powered by [Express.js](), [Passport.js](https://www.passportjs.org/) and [Prisma](https://www.prisma.io)
 
 ## Purpose
 
+Performs routing with API gateway.
 Provides authentication and session mechanisms via JWT.
 
 ## API Endpoints
