@@ -58,10 +58,11 @@ router.post("/login", async (req, res, next) => {
         })(req, res, next);
     })
         .then((user) => {
-            const { id } = user as User;
+            const { id, role } = user as User;
             const token = jwt.sign(
                 {
                     user_id: id,
+                    role: role,
                 },
                 appConfig.JWT_SECRET,
                 {
