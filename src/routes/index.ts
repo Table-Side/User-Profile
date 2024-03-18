@@ -1,2 +1,3 @@
-export { default as auth } from "./auth.route";
-// export { default as users } from "./users.route";
+export { default as auth } from "./auth.routes";
+export { default as users } from "./users.routes";
+export * as proxy from "./proxy";

@@ -1,6 +1,7 @@
 import express, {NextFunction, Request, Response} from 'express';
 
 import cors from 'cors';
+import morgan from 'morgan';
 
 import * as passportConfig from "./config/passport";
 import * as routers from "./routes";
@@ -27,10 +28,7 @@ class App {
         });
 
         // Request Logging
-        this.server.use((req, res, next) => {
-            console.log(`Request received: ${req.method} ${req.url}`);
-            next();
-        });
+        this.server.use(morgan('combined'));
 
         // CORS
         this.server.use(cors());
@@ -38,10 +36,15 @@ class App {
 
     routes() {
         // Authentication
-        this.server.use("", routers.auth);
+        this.server.use("/auth", routers.auth);
 
         // User Profile
-        // this.server.use("/users", routers.users);
+        this.server.use("/users", routers.users);
+
+        // Proxy to microservices
+        this.server.use("/restaurant", routers.proxy.restaurant);
+        this.server.use("/order", routers.proxy.order);
+        this.server.use("/kitchen", routers.proxy.kitchen);
 
         // 404
         this.server.use((req, res, next) => {

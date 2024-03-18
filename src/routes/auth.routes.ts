@@ -1,6 +1,6 @@
 import { Router } from "express";
 import passport from "passport";
-import type { User } from "../../node_modules/.prisma/client";
+import type { User } from ".prisma/client";
 import jwt from "jsonwebtoken";
 import prisma from "../config/prisma";
 import { appConfig } from "../config/app";
@@ -28,7 +28,7 @@ router.post("/register", async (req, res) => {
             }
 
             const user = await prisma.user.create({
-                data: { email, password: hashedPassword },
+                data: { email, password: hashedPassword, role: role ?? "user" },
             });
 
             return user;
@@ -61,11 +61,11 @@ router.post("/login", async (req, res, next) => {
             const { id } = user as User;
             const token = jwt.sign(
                 {
-                    id,
+                    user_id: id,
                 },
                 appConfig.JWT_SECRET,
                 {
-                    expiresIn: "7d",
+                    expiresIn: "60m",
                 }
             );
             return res.status(200).json({ status: true, token });
