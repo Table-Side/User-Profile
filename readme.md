@@ -6,7 +6,6 @@ Powered by [Express.js](https://expressjs.com), [Passport.js](https://www.passpo
 
 ## Purpose
 
-Performs routing with API gateway.
 Provides authentication and session mechanisms via JWT.
 
 ## API Endpoints
