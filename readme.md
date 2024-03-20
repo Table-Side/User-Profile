@@ -2,7 +2,7 @@
 
 A microservice acting as a gateway, and providing user authentication and management.
 
-Powered by [Express.js](), [Passport.js](https://www.passportjs.org/) and [Prisma](https://www.prisma.io)
+Powered by [Express.js](https://expressjs.com), [Passport.js](https://www.passportjs.org/) and [Prisma](https://www.prisma.io)
 
 ## Purpose
 
