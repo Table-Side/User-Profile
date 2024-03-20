@@ -1,6 +1,6 @@
-# Tableside: API Gateway & User Service
+# Tableside: Identity and Access Management Service
 
-A microservice acting as a gateway, and providing user authentication and management.
+A microservice providing user authentication and role assignment.
 
 Powered by [Express.js](https://expressjs.com), [Passport.js](https://www.passportjs.org/) and [Prisma](https://www.prisma.io)
 

@@ -41,11 +41,6 @@ class App {
         // User Profile
         this.server.use("/users", routers.users);
 
-        // Proxy to microservices
-        this.server.use("/restaurant", routers.proxy.restaurant);
-        this.server.use("/order", routers.proxy.order);
-        this.server.use("/kitchen", routers.proxy.kitchen);
-
         // 404
         this.server.use((req, res, next) => {
             return res.status(404).send("Not found or invalid params");
