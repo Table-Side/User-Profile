@@ -10,15 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       String @id @default(uuid())
-  email    String @unique
-  password String
-  role     String @default("user")
-
-  Profile Profile?
-}
-
 model Profile {
   id     String @id @default(uuid())
   userId String @unique
@@ -28,6 +19,4 @@ model Profile {
 
   firstName String
   lastName  String
-
-  user User @relation(fields: [userId], references: [id])
 }

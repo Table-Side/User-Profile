@@ -3,7 +3,6 @@ import express, {NextFunction, Request, Response} from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import * as passportConfig from "./config/passport";
 import * as routers from "./routes";
 
 class App {
@@ -35,9 +34,6 @@ class App {
     }
 
     routes() {
-        // Authentication
-        this.server.use("/auth", routers.auth);
-
         // User Profile
         this.server.use("/users", routers.users);
 

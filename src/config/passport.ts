@@ -15,6 +15,12 @@ export const configure = (app: Express) => {
             {
                 jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
                 secretOrKey: appConfig.JWT_SECRET,
+                issuer: 'iam.tableside.site',
+                audience: 'tableside.site',
+                jsonWebTokenOptions: {
+                    maxAge: '6h',
+
+                }
             },
             (jwtPayload, cb) => {
                 return prisma.user
