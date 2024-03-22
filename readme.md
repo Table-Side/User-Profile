@@ -1,8 +1,8 @@
-# Tableside: Identity and Access Management Service
+# Tableside: User Profiles Service
 
-A microservice providing user authentication and role assignment.
+A microservice for managing user profiles within the Tableside app.
 
-Powered by [Express.js](https://expressjs.com), [Passport.js](https://www.passportjs.org/) and [Prisma](https://www.prisma.io)
+Powered by [Express.js](https://expressjs.com) and [Prisma](https://www.prisma.io)
 
 ## Purpose
 
@@ -17,7 +17,7 @@ Registers a new user.
 ```json
 {
     "email": "string",
-    "password": "string",
+    "name": "string",
     "role": "string"
 }
 ```
@@ -26,25 +26,8 @@ Registers a new user.
 ```json
 {
     "id": "string",
-    "email": "string",
+    "name": "string",
     "role": "string"
-}
-```
-
-### POST /authenticate
-Authenticates a user.
-#### Request Body
-```json
-{
-    "email": "string",
-    "password": "string"
-}
-```
-
-#### Response Body
-```json
-{
-  "token": "string"
 }
 ```
 

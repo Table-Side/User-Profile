@@ -3,6 +3,10 @@ import prisma from "../config/prisma";
 
 const router = Router();
 
+router.post("/register", async (req, res) => {
+    
+});
+
 router.get("/me", async (req, res) => {
     try {
         const userId = req.body.id;
